@@ -1,0 +1,46 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+{% load static %}
+{% load humanize %}
+
+<main class="container">
+    <div class="row">
+        <div class="col-3">
+            <h2>Categorías</h2>
+            <hr>
+            <ul>
+                {% for c in categorias %}
+                <a href=""><li>{{ c.categoria }}</li></a>
+
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-9">
+            <h2>PRODUCTOS</h2>
+            <div class="row">
+                {% for p in productos %}
+                    <div class="col-4">
+                        <div class="card op-card">
+                            {% if p.imagen %}
+                            <img src="{{ p.imagen.url }}" class="card-img-top" alt="...">
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{ p.nombre_producto | capfirst }}</h5>
+                                <hr>
+                                <p class="card-text">{{ p.marca }}</p>
+                                <a href="{% url 'detail_product' p.id %}" class="btn btn-warning">${{ p.valor | intcomma }}</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div>
+                {% include 'core/paginator.html' %}
+            </div>
+        </div>
+    </div>
+</main>
+    
+{% endblock %}

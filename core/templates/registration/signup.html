@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/9bc017105e.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="{% static '/core/css/style.css' %}">
+    <title>MUSICPRO | SignUp</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3">
+                <div class="card mt-3 op-login-card">
+                    <div class="card-body">
+                        <h2 class="text-center op-login-h2">MUSICPRO</h2>
+                        <h3 class="text-center op-login-h3">SignUp</h3>
+                        <hr>
+                        <form action="" method="post">
+
+                            {% csrf_token %}
+                            {{ form }}
+
+                            <h6 class="text-center mt-5">¿Ya tienes cuenta? <a href="{% url 'login' %}">Iniciar Sesión</a></h6>
+                            <div class="mt-5 d-flex justify-content-between" >
+                                <a class="btn btn-lg" href="{% url 'home' %}">Cancelar</a>
+                                <input type="submit" value="Registrarme" class="align-self-end btn-lg btn btn-warning">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+{% load static %}
+{% load humanize %}
+
+    <aside class="op-carrusel">
+        <img src="{% static 'core/img/1.jpg' %}" class="op-cfoto" alt="">
+        <div class="container">
+            <div class="row">
+                <div class="col-6"></div>
+                <div class="col-6">
+                    <h2 class="op-osw op-tfoto">LO ÚLTIMO DE LTD VIPER SERIES</h2>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <main class="container">
+        <article class="op-ofertas">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="op-title" >OFERTAS</h2>
+                </div>
+            </div>
+            <div class="row">
+                {% for p in productos %}
+                    {% if p.oferta %}
+                    <div class="col-3">
+                        <div class="card op-card">
+                            {% if p.imagen %}
+                            <img src="{{ p.imagen.url }}" class="card-img-top" alt="...">
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{p.nombre_producto | capfirst}}</h5>
+                                <hr>
+                                <p class="card-text">{{ p.marca }}</p>
+                                <a href="{% url 'detail_product' p.id %}" class="btn btn-warning">${{ p.valor_oferta | intcomma }}</a>
+                                <del>${{ p.valor | intcomma }}</del>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </article>
+        <hr>
+        <article class="op-nuevo">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="op-title">NOVEDADES</h2>
+                </div>
+            </div>
+            <div class="row">
+                {% for p in productos %}
+                    {% if p.nuevo %}
+                    <div class="col-3">
+                        <div class="card op-card">
+                            {% if p.imagen %}
+                            <img src="{{ p.imagen.url }}" class="card-img-top" alt="...">
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{ p.nombre_producto | capfirst }}</h5>
+                                <hr>
+                                <p class="card-text">{{ p.marca }}</p>
+                                <a href="{% url 'detail_product' p.id %}" class="btn btn-warning">${{ p.valor | intcomma }}</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </article>
+    </main>
+    <aside class="op-contacto" id="contacto">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="op-title">CONTACTO</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-5">
+                    <img src="{% static 'core/img/3.jpg' %}" alt="" width="100%">
+                </div>
+                <div class="col-7">
+                    <form action="">
+                        <input type="text" name="contacto-nombre" placeholder="Ingresa tu nombre" id="">
+                        <input type="email" name="contacto-mail" placeholder="Ingresa tu correo electrónico" id="">
+                        <textarea name="contacto-mensaje" id="" cols="30" rows="10" placeholder="Escribe tu mensaje..."></textarea>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+    </aside>
+    
+{% endblock %}

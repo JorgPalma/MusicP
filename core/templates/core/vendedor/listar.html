@@ -1,0 +1,65 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+{% load static %}
+{% load humanize %}
+{% load crispy_forms_tags %}
+
+<main class="container">
+    {% block js %}
+
+    <script>
+        function deleteProduct(id){
+            Swal.fire({
+                "title": "¿Estás seguro?",
+                "text": "Esta acción no se puede deshacer",
+                "icon": "question",
+                "showCancelButton": true,
+                "cancelButtonText": "No, cancelar",
+                "confirmButtonText": "Sí, eliminar",
+                "reverseButtons":true,
+                "confirmButtonColor":"red"
+            })
+            .then(function(result){
+                if(result.isConfirmed) {
+                    window.location.href = "/borrar/"+id+""
+                }
+            }) 
+        }
+    </script>
+
+    {% endblock %}
+    <div class="row d-flex justify-content-center">
+        <div class="col-12">
+            <h2 class="mb-3">Listar productos</h2>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in productos %}
+                        <tr>
+                            <th>{{ p.codigo | title  }}</th>
+                            <td>{{ p.nombre_producto }}</td>
+                            <td>{{ p.marca.marca }}</td>
+                            <td>${{ p.valor | intcomma}}</td>
+                            <td><a href="{% url 'edit_product' p.id %}" class="btn btn-warning"><i class="fa-solid fa-file-pen"></i></a></td>
+                            <td><a href="#" onclick="deleteProduct({{ p.id }})" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+</main>
+    
+{% endblock %}

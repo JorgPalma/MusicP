@@ -1,0 +1,336 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+nav {
+    background: #000;
+    width: 100%;
+    height: 10vh;
+}
+
+.form-s{
+    width: 40%;
+    margin: 0 auto;
+}
+
+.cont-form-s{
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.cont-form-s input{
+    width: 90%;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+}
+
+.cont-form-s button {
+    width: 10%;
+    border: none;
+    border-radius: 10px;
+    background: #fff;
+}
+
+.nav-item a{
+    color: white; 
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 300;
+}
+
+.op-carrusel {
+    height: 90vh;
+    width: 100%;
+    position: relative;
+}
+
+.op-qui {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 900;
+    color: white;
+    text-decoration: none;
+}
+
+.op-qui:hover{
+    color: white;
+}
+
+.op-osw {
+    font-family: 'Oswald', sans-serif;
+}
+
+.op-cfoto{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    filter: grayscale(.5);
+    
+}
+
+.op-tfoto{
+    margin-top: 100px;
+    position: relative;
+    font-size: 100px;
+    color: white;
+    text-align: left;
+}
+
+body {
+    background: #e2e2e2;
+}
+
+.op-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 70px;
+    text-align:center;
+}
+
+.op-card{
+    padding: 10px;
+    width: 100%;
+    border:none;
+    outline: none;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.op-card img {
+    width: 200PX;
+    height: 200px;
+}
+
+.op-card h5 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 900;
+    text-align: center;
+}
+
+.op-card p {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    color: #4e4e4e;
+}
+
+.op-card a{
+    display:block;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    text-align: center;
+}
+
+.op-card del {
+    display: block;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 900;
+    text-align: center;
+}
+
+.op-contacto{
+    background: black;
+    padding: 20px;
+}
+
+.op-contacto h2 {
+    color: white;
+}
+
+.op-contacto img{
+    border-radius: 10px;
+}
+
+.op-contacto form {
+    width: 100%;
+}
+
+.op-contacto form input{
+    width: 100%;
+    height: 30px;
+    margin-bottom: 10px;
+    padding-left: 5px;
+    border-radius: 10px;
+}
+
+.op-contacto form textarea {
+    border-radius: 10px;
+    width: 100%;
+    height: 70%;
+    resize: none;
+}
+
+footer {
+    background: black;
+    height: 200px;
+}
+
+footer a {
+    display: block;
+    font-size: 80px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 900;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+footer a:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+.cont-login{
+    margin: 20px;
+    background: #e2e2e2;
+    display: block;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.login-op .row{
+    width: 100%;
+    flex-wrap: wrap;
+    height: 100vh;
+}
+
+.op-logint{
+    font-size: 50px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 900;
+    color: black;
+    margin-bottom: 20px;
+}
+
+
+.op-img-detalle-img{
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 15px;
+}
+
+.op-detalle{
+    font-size: 20px;
+    height: 250px;
+    max-height: 250px;
+}
+
+.op-loginl{
+    font-size: 30px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 20px;
+}
+ 
+.contenedor {
+    background: #fff;
+}
+
+.cont-login  form{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.cont-login  form label{
+    width: 100%;
+    color: black;
+    font-size: 20px;
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: 400;
+}
+
+.cont-login  form input{
+    width: 100%;
+    color: black;
+    font-size: 20px;
+    text-align: left;
+    margin-bottom: 0px;
+    border: none;
+    border-radius: 10px;
+    height: 50px;
+    padding-left: 10px;
+}
+
+.cont-login  form input:focus{
+    width: 100%;
+    color: black;
+    font-size: 20px;
+    text-align: left;
+    margin-bottom: 0px;
+    border: none;
+    outline: none;
+}
+
+.cont-login form p,
+.cont-login form .alink{
+    width: 100%;
+    color: black;
+    display: inline-block;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 0px;
+    border: none;
+    outline: none;
+    margin-bottom: 20px;
+}
+
+.cont-login .botonero1{
+    width: 100%;
+    display: flex;
+    margin-top: 134px;
+    justify-content: space-between;
+}
+
+.cont-login .op-formbtn{
+    width: 45%;
+}
+
+.cont-login .botonero2{
+    width: 100%;
+    display: flex;
+    margin-top: 50px;
+    justify-content: space-between;
+}
+
+.op-login-card {
+    height: 95vh;
+}
+
+.op-login-h2 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bolder;
+    font-size: 50px;
+}
+
+.op-login-h3{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+}
+
+.op-login-card label{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 200;
+    font-size: 18px;
+}
+
+.op-login-card input[type="text"],
+.op-login-card input[type="password"]{
+    width: 100%;
+}
+
+.op-login-card .card-body {
+    padding: 40px;
+}
