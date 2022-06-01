@@ -11,6 +11,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required, permission_required
 from rest_framework import viewsets
 from .serializers import ProductoSerializer
+from .carrito import Carrito
 
 # Create your views here.
 class ProductoViewset(viewsets.ModelViewSet):
@@ -108,7 +109,7 @@ def products(request):
     page = request.GET.get('page', 1)
 
     try:
-        paginator = Paginator(productos, 1)
+        paginator = Paginator(productos, 12)
         productos = paginator.page(page)
     except:
         raise Http404
@@ -140,3 +141,29 @@ def signup(request):
 
     return render(request, 'registration/signup.html', data)
 
+def add_cart(request, id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=id)
+    carrito.agregar(producto)
+    return redirect("cart")
+
+def delete_cart(request, id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=id)
+    carrito.eliminar(producto)
+    return redirect("cart")
+
+def less_cart(request, id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=id)
+    carrito.restar(producto)
+    return redirect("cart")
+
+def clean_cart(request):
+    
+    carrito = Carrito(request)
+    carrito.limpiar()
+    return redirect("cart")
+
+def cart(request):
+    return render(request, 'core/carrito.html')

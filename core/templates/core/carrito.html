@@ -1,0 +1,50 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+{% load static %}
+{% load humanize %}
+{% load crispy_forms_tags %}
+
+<main class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-9">
+            <h2 class="mb-3">Carrito <i class="fas fa-shopping-cart"></i></h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if request.session.carrito.items %}
+                    {% for key, value in request.session.carrito.items %}
+                    <tr>
+                        <td>{{ value.nombre }}</td>
+                        <td>${{ value.precio | intcomma }}</td>
+                        <td><a href="{% url 'less_cart' value.id %}" class="btn btn-danger">-</a> {{ value.cantidad }} <a href="{% url 'add_cart' value.id %}" class="btn btn-success">+</a></td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td colspan="3"><h2>Aún no hay productos en tu carrito</h2></td>
+                    </tr>
+                    {% endif %}
+                    <tr>
+                        <th scope="row">Total:</th>
+                        <td colspan="2">${{ total_carrito | intcomma }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <div class="row d-flex text center justify-content-end mb-5">
+                <a href="{% url 'clean_cart' %}" class="btn btn-lg col-3 float-right">Limpiar</a>
+                <a class="btn btn-lg btn-warning col-3">Continuar</a>
+            </div>
+        </div>
+    </div>
+</main>
+    
+{% endblock %}
