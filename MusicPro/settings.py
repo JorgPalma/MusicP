@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-f1qn0_x(ln=wu_x49j2u6s2knha_&-8s)o$y271kyg9ci3-%8_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['198.211.99.20', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['198.211.99.20', 'localhost', '127.0.0.1', 'musicprojfj.pythonanywhere.com']
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
