@@ -1,8 +1,8 @@
 from urllib.request import Request
 from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Categoria, Producto
-from .forms import ProductoForms, CustomUserCreationForm
+from .models import Categoria, Producto, Sucursal
+from .forms import ProductoForms, CustomUserCreationForm, PedidoForms
 from django.contrib import messages
 from django.db.models import Q
 from django.core.paginator import Paginator
@@ -167,3 +167,19 @@ def clean_cart(request):
 
 def cart(request):
     return render(request, 'core/carrito.html')
+
+def buy(request):
+    data = {
+        'form': PedidoForms(),
+        'sucursal': Sucursal.objects.all()
+    }
+
+    if request.method == 'POST':
+        formulario = ProductoForms(data=request.POST, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, "Producto agregado correctamente")
+        else:
+            data["form"] = formulario
+
+    return render(request, 'core/compra.html', data)

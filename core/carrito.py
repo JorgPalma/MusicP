@@ -1,3 +1,6 @@
+from ast import If
+
+
 class Carrito:
     def __init__ (self, request):
         self.request = request
@@ -12,7 +15,15 @@ class Carrito:
     def agregar(self, producto):
         id = str(producto.id)
         if id not in self.carrito.keys():
-            self.carrito[id] = {
+            if producto.oferta: 
+                self.carrito[id] = {
+                    "id": producto.id,
+                    "nombre": producto.nombre_producto,
+                    "precio": producto.valor_oferta,
+                    "cantidad": 1,
+                }
+            else:
+                self.carrito[id] = {
                 "id": producto.id,
                 "nombre": producto.nombre_producto,
                 "precio": producto.valor,
@@ -20,7 +31,10 @@ class Carrito:
             }
         else:
             self.carrito[id]["cantidad"] += 1
-            self.carrito[id]["precio"] += producto.valor
+            if producto.oferta:
+                self.carrito[id]["precio"] += producto.valor_oferta
+            else:
+                self.carrito[id]["precio"] += producto.valor
         self.guardar_carrito()
 
     def guardar_carrito(self):
@@ -37,7 +51,10 @@ class Carrito:
         id = str(producto.id)
         if id in self.carrito.keys():
             self.carrito[id]["cantidad"] -= 1
-            self.carrito[id]["precio"] -= 1
+            if producto.oferta:
+                self.carrito[id]["precio"] -= producto.valor_oferta
+            else:
+                self.carrito[id]["precio"] -= producto.valor
             if self.carrito[id]["cantidad"] <= 0: self.eliminar(producto)
             self.guardar_carrito()
 

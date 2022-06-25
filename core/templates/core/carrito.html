@@ -24,7 +24,7 @@
                     <tr>
                         <td>{{ value.nombre }}</td>
                         <td>${{ value.precio | intcomma }}</td>
-                        <td><a href="{% url 'less_cart' value.id %}" class="btn btn-danger">-</a> {{ value.cantidad }} <a href="{% url 'add_cart' value.id %}" class="btn btn-success">+</a></td>
+                        <td><a href="{% url 'less_cart' value.id %}" class="btn btn-danger"> - </a>   {{ value.cantidad }}   <a href="{% url 'add_cart' value.id %}" class="btn btn-success"> + </a></td>
                     </tr>
                     {% endfor %}
                     {% else %}
@@ -41,7 +41,7 @@
             <hr>
             <div class="row d-flex text center justify-content-end mb-5">
                 <a href="{% url 'clean_cart' %}" class="btn btn-lg col-3 float-right">Limpiar</a>
-                <a class="btn btn-lg btn-warning col-3">Continuar</a>
+                <a href="{% url 'buy' %}" class="btn btn-lg btn-warning col-3">Continuar</a>
             </div>
         </div>
     </div>
